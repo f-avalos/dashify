@@ -1,0 +1,234 @@
+main{
+  position: relative;
+  z-index: 1;
+  background-image: linear-gradient(var(--gradient) 2px, transparent 2px), linear-gradient(to right, var(--gradient) 2px, transparent 2px);
+  background-size: 50px 50px;
+  background-position: 10%;
+  width: 100%;
+  animation: background-move 60s infinite linear;
+  -webkit-animation: background-move 60s infinite linear;
+  transition: background-image 1s ease;
+  -webkit-transition: background-image 1s ease;
+  -moz-transition: background-image 1s ease;
+  -ms-transition: background-image 1s ease;
+  -o-transition: background-image 1s ease;
+}
+
+.focus{
+  z-index: -2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(ellipse 90% 70% at 50% -20%, rgba(224, 224, 224, 0.15), var(--background));
+  transition: background-image 1s ease;
+  -webkit-transition: background-image 1s ease;
+  -moz-transition: background-image 1s ease;
+  -ms-transition: background-image 1s ease;
+  -o-transition: background-image 1s ease;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  position: relative;
+  background-image: url('/assets/images/waves-login-mobile-tablet.svg');
+  background-size: cover;
+  background-position: start;
+  animation: wave 60s infinite linear;
+  -webkit-animation: wave 60s infinite linear;
+}
+
+@keyframes background-move {
+  0% {
+    background-position: 0 0;
+  }
+
+  50%{
+    background-position: 0 20%;
+  }
+
+  100% {
+    background-position: 0 -10%;
+  }
+}
+
+@keyframes wave{
+  0%{
+    background-position: 0 0;
+  }
+
+  50%{
+    background-position: 100% 0;
+  }
+
+  100%{
+    background-position: 0 0;
+  }
+}
+
+.content-login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-login img{
+  width: 22rem;
+  max-width: 100%;
+}
+
+.content-login > p{
+  font-size: 1rem;
+  max-width: 19rem;
+}
+
+
+.faqs{
+  background-color: #30A2C2;
+  display: flex;
+  justify-content: center;
+}
+
+.content-faq{
+  margin: 2rem 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
+}
+
+.content-faq > h2{
+  color: white;
+}
+
+.group-faqs{
+  display: flex;
+  flex-direction: column;
+}
+
+.content-faq .group-faqs{
+  width: 100%;
+}
+
+.content-faq .group-faqs details{
+  font-weight: 500;
+  border-bottom: 1px solid #ffffff;
+}
+
+.content-faq .group-faqs details:hover{
+  background-color: #197a97;
+}
+
+.content-faq .group-faqs details[open]{
+  background-color: #197a97;
+}
+
+
+.content-faq .group-faqs details, .group-faqs summary + p{
+  color: white;
+}
+
+.group-faqs summary{
+  padding: 1.5rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.group-faqs summary::after{
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: url('/assets/images/arrow.svg') no-repeat;
+  background-size: contain;
+  filter: invert(1);
+  -webkit-filter: invert(1);
+  transition: all .2s ease;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+}
+
+.group-faqs details[open] > summary::after{
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.group-faqs details > p{
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.group-faqs details > p span{
+  color: #49ff61;
+  font-weight: 500;
+}
+
+footer{
+  background-image: radial-gradient(ellipse 100% 100% at 50% -20%, rgba(156, 156, 156, 0.089), var(--background));
+
+}
+
+footer .content-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+footer .content-footer > .logo{
+  display: flex;
+  width: 14rem;
+}
+
+footer .content-footer > .logo img{
+  width: 100%;
+}
+
+footer .content-footer hr{
+  width: 80%;
+  max-width: 30rem;
+  border: 1px solid #7e7e7e;
+}
+
+
+
+
+@media(min-width: 768px){
+  .login{
+    background-image: url('/assets/images/waves-login-desktop.svg');
+  }
+
+  .content-login img{
+    width: 30rem;
+  }
+
+  .content-login > p{
+    font-size: 1.2rem;
+    max-width: 60%;
+  }
+
+  .content-faq{
+    padding: 0 2rem;
+    width: 100%;
+    max-width: 60rem;
+  }
+}
