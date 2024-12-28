@@ -1,0 +1,17 @@
+<div class="detail">
+  @if (type()=== 'follows') {
+  <h2>{{user().followers.total}}</h2>
+  <span>Seguidores</span>
+  }@else if(type() === 'artists') {
+  <h2>{{following()?.artists?.items?.length}}</h2>
+  <span>Artistas que sigues</span>
+  }@else if(type() === 'playlists') {
+  <h2>{{playlists()?.total}}</h2>
+  <span>Playlist vinculadas</span>
+  }
+</div>
+<div class="content-icon">
+  <div class="icon">
+    <div [ngStyle]="{'background-image':'url(/assets/images/icons/'+type()+'.svg'+')'}"></div>
+  </div>
+</div>

@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>
+    (
+      function() {
+        if(localStorage.getItem('theme')) {
+          document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+        }
+      }
+    )();
+  </script>
   <meta charset="utf-8">
   <title>Dashify</title>
   <base href="/">

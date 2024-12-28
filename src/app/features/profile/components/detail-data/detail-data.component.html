@@ -1,0 +1,21 @@
+<div class="content-profile">
+    <h1>{{user().display_name}}</h1>
+    <div class="detail-content">
+      <div>
+        <span>Ubicación:</span>
+        <span><strong>{{user().country | countries}}</strong></span>
+      </div>
+      <div>
+        <span>Usuario de:</span>
+        <span><strong>Spotify {{user().product}}</strong></span>
+      </div>
+      <div>
+      <span>Correo:</span>
+      <span><strong>{{user().email}}</strong></span>
+    </div>
+    <div>
+      <span>Perfil público:</span>
+      <span><strong>Ir a <a [href]="user().external_urls.spotify">Spotify</a></strong></span>
+    </div>
+  </div>
+</div>

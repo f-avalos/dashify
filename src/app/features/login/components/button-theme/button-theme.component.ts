@@ -68,8 +68,8 @@ export class ButtonThemeComponent {
   // Alternativa a usar constructor
   themeService: ThemeService = inject(ThemeService);
 
-  ngOnInit(): void {
-    this.isDarkTheme = this.themeService.getTheme() === 'dark' ? true : false;
+  async ngOnInit(): Promise<void> {
+    this.isDarkTheme = await this.themeService.getTheme() === 'dark' ? true : false;
     this.themeService.loadTheme();
   }
 

@@ -1,0 +1,85 @@
+:host{
+  height: 100%;
+
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.content-profile{
+  display: flex;
+  flex-direction: column;
+}
+
+.content-profile h1{
+  text-align: center;
+  color: white;
+}
+
+.content-profile .detail-content{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  'ubicacion correo'
+  'usuario perfil';
+}
+
+.content-profile .detail-content > div{
+  display: flex;
+  flex-direction: column;
+}
+
+.content-profile .detail-content > div span:nth-child(2) > strong{
+  font-size: 1.2rem;
+}
+
+.content-profile .detail-content > div span:nth-child(2) > strong a{
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.content-profile .detail-content div:nth-child(1){
+  grid-area: ubicacion;
+}
+
+.content-profile .detail-content div:nth-child(2){
+  grid-area: usuario;
+}
+
+.content-profile .detail-content div:nth-child(3){
+  grid-area: correo;
+  align-items: flex-end;
+}
+
+.content-profile .detail-content div:nth-child(4){
+  grid-area: perfil;
+  align-items: flex-end;
+}
+
+@media (min-width: 1025px){
+  :host{
+    justify-content: flex-start;
+  }
+
+  .content-profile h1{
+    text-align: left;
+  }
+
+  .content-profile .detail-content{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .content-profile .detail-content div:nth-child(3){
+    align-items: flex-start;
+  }
+
+  .content-profile .detail-content div:nth-child(4){
+    align-items: flex-start;
+  }
+}
+

@@ -1,0 +1,53 @@
+:host{
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+}
+
+.detail{
+  display: flex;
+  flex-direction: column;
+}
+
+.detail h2{
+  margin-bottom: 0;
+  font-size: 3rem;
+}
+
+.detail span{
+  color: var(--text);
+}
+
+.content-icon{
+  display: flex;
+  align-items: center;
+}
+
+.icon{
+  cursor: pointer;
+  width: 4rem;
+  aspect-ratio: 1/1;
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--secondary) 0%, var(--accent) 100%);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.icon div{
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  aspect-ratio: 1/1;
+  height: 100%;
+  width: 100%;
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+}
+

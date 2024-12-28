@@ -9,11 +9,11 @@ export class ThemeService {
 
   constructor(private platformService: PlatformService) {}
 
-  loadTheme(): void {
+  async loadTheme(): Promise<void> {
 
     let theme:string
 
-    if(this.platformService.isPlatformBrowser()) {
+    if(this.platformService.isBrowser()) {
       // Priorizar tema en localStorage
       if(localStorage.getItem(this.THEME_KEY)) {
         document.documentElement.setAttribute('data-theme', localStorage.getItem(this.THEME_KEY)||'light');
@@ -27,22 +27,22 @@ export class ThemeService {
     }
   }
 
-  setTheme(theme: string): void {
-    if(this.platformService.isPlatformBrowser()) {
+  async setTheme(theme: string): Promise<void> {
+    if(this.platformService.isBrowser()) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem(this.THEME_KEY, theme);
     }
   }
 
-  getTheme(): string | null {
-    if(this.platformService.isPlatformBrowser()) {
+  async getTheme(): Promise<string | null> {
+    if(this.platformService.isBrowser()) {
       return document.documentElement.getAttribute('data-theme') || 'light';
     }
     return ''
   }
 
-  toggleTheme(): void {
-    const currentTheme = this.getTheme();
+  async toggleTheme(): Promise<void> {
+    const currentTheme = await this.getTheme();
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     this.setTheme(newTheme);
   }

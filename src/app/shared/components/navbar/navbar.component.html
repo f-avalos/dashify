@@ -1,1 +1,50 @@
-<p>navbar works!</p>
+<nav>
+  <div class="header-nav">
+    <img #imgLogo src="/assets/images/dashify-logotype.svg" alt="">
+    <input (change)="btnToggle($event)" #toggleBtn id="toggleBtn" type="checkbox">
+    <label id="toggle-btn" for="toggleBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  <div #contentNav class="content-nav">
+    <div class="profile">
+      @if (user) {
+        <img [src]="this.user.images[0].url" [title]="this.user.display_name" [alt]="this.user.display_name">
+        <div class="profile-info">
+          <span><strong>{{this.user.display_name}}</strong></span>
+          <span>Spotify {{this.user.product}}</span>
+        </div>
+      } @else {
+        <ngx-skeleton height="45px" backgroundColor="rgba(0,0,0,0.3)" variant="circle" width="45px"></ngx-skeleton>
+        <div class="profile-info">
+          <ngx-skeleton height="16px" backgroundColor="rgba(0,0,0,0.3)" borderRadius="10px" margin="0 0 5px 0" width="120px"></ngx-skeleton>
+
+          <ngx-skeleton height="16px" backgroundColor="rgba(0,0,0,0.3)" borderRadius="10px" width="120px"></ngx-skeleton>
+        </div>
+      }
+      </div>
+    <hr>
+    <div class="menu">
+      <ul>
+        <li  routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}" ><a (click)="selectSection()" routerLink="/home/"><img src="/assets/images/icons/user.svg" alt=""><span>Perfil</span></a></li>
+        <li routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><a (click)="selectSection()" routerLink="/home/playlist"><img src="/assets/images/icons/playlist.svg" alt=""><span>Playlist</span></a></li>
+        <li routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><a (click)="selectSection()" routerLink="/home/review"><img src="/assets/images/icons/dashboard.svg" alt=""><span>Review</span></a></li>
+      </ul>
+      <hr>
+      <ul>
+        <li (click)="switchTheme()">
+          <a #switchThemeA>
+            <img src=""><span></span>
+          </a>
+        </li>
+        <li (click)="logout()">
+          <a>
+            <img src="/assets/images/icons/logout.svg" alt=""><span>Cerrar sesión</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

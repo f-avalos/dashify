@@ -1,1 +1,111 @@
-<p>profile works!</p>
+<section class="profile">
+  @if (user && topArtists && playlists && following && topTracks) {
+    <div [ngStyle]="{'background-image':'url('+this.user.images[0].url+')'}" class="container">
+      @defer (on viewport) {
+        <app-detail-data [user]="user"></app-detail-data>
+      } @placeholder {
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      }
+    </div>
+    <div class="group-container">
+      <div class="container">
+        @defer (on viewport) {
+          <app-box-data [user]="user" [type]="'follows'"></app-box-data>
+        } @placeholder {
+          <div [ngStyle]="{'display':'flex', 'gap':'1rem','width':'100%', 'height':'100%'}">
+            <div [ngStyle]="{'display':'flex', 'gap':'.5rem','width':'90%', 'flex-direction':'column'}">
+              <ngx-skeleton width="100%" height="40px" backgroundColor="var(--gray)"  >
+              </ngx-skeleton>
+              <ngx-skeleton width="100%" height="16px" backgroundColor="var(--gray)"  >
+              </ngx-skeleton>
+            </div>
+            <ngx-skeleton width="64px" variant="circle" height="64px" backgroundColor="var(--gray)">
+            </ngx-skeleton>
+          </div>
+        }
+      </div>
+      <div class="container">
+        @defer (on viewport) {
+          <app-box-data [user]="user" [following]="following" [type]="'artists'"></app-box-data>
+        } @placeholder {
+          <div [ngStyle]="{'display':'flex', 'gap':'1rem','width':'100%', 'height':'100%'}">
+            <div [ngStyle]="{'display':'flex', 'gap':'.5rem','width':'90%', 'flex-direction':'column'}">
+              <ngx-skeleton width="100%" height="40px" backgroundColor="var(--gray)"  >
+              </ngx-skeleton>
+              <ngx-skeleton width="100%" height="16px" backgroundColor="var(--gray)"  >
+              </ngx-skeleton>
+            </div>
+            <ngx-skeleton width="64px" variant="circle" height="64px" backgroundColor="var(--gray)">
+            </ngx-skeleton>
+          </div>
+        }
+      </div>
+      <div class="container">
+        @defer (on viewport) {
+          <app-box-data [user]="user" [playlists]="playlists" [type]="'playlists'"></app-box-data>
+        } @placeholder {
+          <div [ngStyle]="{'display':'flex', 'gap':'1rem','width':'100%', 'height':'100%'}">
+            <div [ngStyle]="{'display':'flex', 'gap':'.5rem','width':'90%', 'flex-direction':'column'}">
+              <ngx-skeleton width="100%" height="40px" backgroundColor="var(--gray)"  >
+              </ngx-skeleton>
+              <ngx-skeleton width="100%" height="16px" backgroundColor="var(--gray)"  >
+              </ngx-skeleton>
+            </div>
+            <ngx-skeleton width="64px" variant="circle" height="64px" backgroundColor="var(--gray)">
+            </ngx-skeleton>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="container">
+      @defer (on viewport) {
+        <app-artists-data [topArtists]="topArtists"></app-artists-data>
+      } @placeholder {
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      }
+    </div>
+    <div class="container">
+      @defer (on viewport) {
+        <app-tracks-data [topTracks]="topTracks"></app-tracks-data>
+      }
+      @placeholder {
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      }
+    </div>
+  }@else {
+    <div class="container-template">
+      <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+      </ngx-skeleton>
+    </div>
+    <div class="group-container">
+      <div [ngStyle]="{'height':'20vh'}" class="container-template">
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      </div>
+      <div [ngStyle]="{'height':'20vh'}" class="container-template">
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      </div>
+      <div [ngStyle]="{'height':'20vh'}" class="container-template">
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      </div>
+    </div>
+    <div class="container-template">
+      <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+      </ngx-skeleton>
+    </div>
+    <div class="container-template">
+      <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+      </ngx-skeleton>
+    </div>
+    <div class="container-template">
+      <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+      </ngx-skeleton>
+    </div>
+  }
+
+</section>

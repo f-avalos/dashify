@@ -1,0 +1,23 @@
+:host{
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  view-transition-name: fade;
+}
+
+
+
+@media (min-width: 1025px){
+  :host{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100dvh;
+  }
+
+  main{
+    height: 100%;
+    overflow-y: scroll;
+  }
+}

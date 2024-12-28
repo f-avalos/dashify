@@ -1,0 +1,132 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+:host h1{
+  text-align: center;
+}
+
+.content{
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.carousel{
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+
+
+
+.carousel::before{
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(to right, var(--background--solid) 20%, rgba(0,0,0,0));
+  z-index: 2;
+}
+
+.carousel::after{
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 10%;
+  height: 100%;
+  background: linear-gradient(to left, var(--background--solid) 20%, rgba(0,0,0,0));
+  z-index: 2;
+}
+
+.carousel::before, .carousel::after{
+  transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+}
+
+.carousel:hover .slide{
+  animation-play-state: paused;
+}
+
+.slide{
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem;
+  white-space: nowrap;
+  animation: 20s slide infinite linear;
+  -webkit-animation: 20s slide infinite linear;
+}
+
+.slide img{
+  min-width: 10rem;
+  width: 20vw;
+  border-radius: .5rem;
+  aspect-ratio: 1/1;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  transition: filter .5s ease;
+  -webkit-transition: filter .5s ease;
+  -moz-transition: filter .5s ease;
+  -ms-transition: filter .5s ease;
+  -o-transition: filter .5s ease;
+}
+
+.slide img:not(:hover) {
+  filter: brightness(0.5);
+  -webkit-filter: brightness(0.5);
+}
+
+@keyframes slide{
+  0%{
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+}
+
+  100%{
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 1025px){
+
+  .content{
+    gap: 3rem;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .content h2{
+    grid-row: 2;
+  }
+
+  .content .carousel{
+    grid-row: 1;
+  }
+
+  .slide img{
+    width: 15vw;
+  }
+
+}

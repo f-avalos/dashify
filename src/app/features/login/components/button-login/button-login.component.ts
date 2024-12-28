@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Inject, Input } from '@angular/core';
+import { AuthService } from '../../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'ButtonLogin',
   standalone: true,
   imports: [],
   template: `
-    <a href="#" id="btn-login">{{content}}</a>
+    <a (click)="authLogin()" id="btn-login">{{content}}</a>
   `,
   styles: `
     #btn-login {
@@ -21,6 +22,7 @@ import { Component, Input } from '@angular/core';
       border-radius: 3rem;
       text-decoration: none;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     #btn-login:hover {
@@ -35,4 +37,10 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonLoginComponent {
   @Input() content = '';
+
+  private authService: AuthService = inject(AuthService);
+
+  authLogin():void {
+    this.authService.login();
+  }
 }

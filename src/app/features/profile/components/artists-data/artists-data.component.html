@@ -1,0 +1,18 @@
+
+<div class="content">
+  <div #content>
+    <h2>Tus artistas</h2>
+  </div>
+  <div class="carousel">
+    <div class="slide">
+      @for (artist of topArtists().items; track $index) {
+        <img [src]="artist.images[0].url" [title]="artist.name" [alt]="artist.name" />
+      }
+    </div>
+    <div class="slide">
+      @for (artist of topArtists().items; track $index) {
+        <img [src]="artist.images[0].url" [title]="artist.name" [alt]="artist.name" />
+      }
+    </div>
+  </div>
+</div>
