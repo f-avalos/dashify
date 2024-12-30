@@ -215,9 +215,6 @@ button{
   -o-transition: all .5s ease;
 }
 
-.container:hover{
-  box-shadow: 0px 0px 10px var(--gray);
-}
 
 @keyframes slide-out{
   0%{

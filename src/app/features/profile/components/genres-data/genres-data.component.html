@@ -1,0 +1,8 @@
+<div #content class="content">
+  <h2>Tus géneros</h2>
+</div>
+  <div cdkDropList cdkDropListOrientation="mixed" class="genres" (cdkDropListDropped)="drop($event)">
+  @for (genre of topGenres(); track $index) {
+    <app-genres class="genre" cdkDrag [genre]="genre.genre"></app-genres>
+  }
+</div>

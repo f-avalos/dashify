@@ -1,5 +1,5 @@
 <section class="profile">
-  @if (user && topArtists && playlists && following && topTracks) {
+  @if (user && topArtists && playlists && following && topTracks && topGenres) {
     <div [ngStyle]="{'background-image':'url('+this.user.images[0].url+')'}" class="container">
       @defer (on viewport) {
         <app-detail-data [user]="user"></app-detail-data>
@@ -71,6 +71,14 @@
         <app-tracks-data [topTracks]="topTracks"></app-tracks-data>
       }
       @placeholder {
+        <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
+        </ngx-skeleton>
+      }
+    </div>
+    <div class="container">
+      @defer (on viewport) {
+        <app-genres-data [topGenres]="topGenres"></app-genres-data>
+      } @placeholder {
         <ngx-skeleton backgroundColor="var(--gray)" borderRadius="10px" class="container-template">
         </ngx-skeleton>
       }

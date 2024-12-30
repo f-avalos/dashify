@@ -11,12 +11,14 @@ import { ArtistsDataComponent } from '../components/artists-data/artists-data.co
 import { TopArtists } from '../../../core/models/topArtists.model';
 import { TopTracks } from '../../../core/models/topTracks.model';
 import { TracksDataComponent } from '../components/tracks-data/tracks-data.component';
+import { TopGenres } from '../../../core/models/topGenres.model';
+import { GenresDataComponent } from '../components/genres-data/genres-data.component';
 
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [DetailDataComponent, ArtistsDataComponent, TracksDataComponent, CommonModule, NgxSkeletonComponent, BoxDataComponent],
+  imports: [DetailDataComponent, ArtistsDataComponent, TracksDataComponent, GenresDataComponent, CommonModule, NgxSkeletonComponent, BoxDataComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -27,6 +29,7 @@ export class ProfileComponent implements OnInit {
   following: Following | undefined = undefined
   topArtists: TopArtists | undefined = undefined
   topTracks: TopTracks | undefined = undefined
+  topGenres: TopGenres[] | undefined = undefined
 
   ngOnInit(): void {
     this.apiService.getCurrentUser().subscribe((user) => {
@@ -43,6 +46,10 @@ export class ProfileComponent implements OnInit {
     });
     this.apiService.getTopTracks('long_term', '10').subscribe((topTracks) => {
       this.topTracks = topTracks;
+    });
+    this.apiService.getTopGenres('long_term').subscribe((topGenres) => {
+      console.log(topGenres);
+      this.topGenres = topGenres;
     });
   }
 }
