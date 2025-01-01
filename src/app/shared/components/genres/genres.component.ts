@@ -10,10 +10,16 @@ import tinycolor from 'tinycolor2';
   template: `
     <div [ngStyle]="{'background': 'linear-gradient(180deg, '+colorLight+' 0%, '+colorDark+' 100%)'}">
       <span [ngStyle]="{'color':colorBase}">{{genre()}}</span>
+      @if(btn()){
+        <button (click)="delete()">
+          <img src="/assets/images/icons/cross.svg" alt="">
+        </button>
+      }
     </div>`,
   styles: `
     :host{
       display: flex;
+      border-radius: .7rem;
     }
 
     div{
@@ -21,18 +27,34 @@ import tinycolor from 'tinycolor2';
       padding: .5rem 1rem;
       border-radius: .7rem;
       display: flex;
+      gap: .5rem;
       box-shadow: 0 1px 3px rgba(0,0,0,.3);
 
       & span{
         font-weight: 600;
       }
-    }
 
+      & button{
+        display: flex;
+        font-weight: 600;
+        background-color: transparent;
+        padding: 0;
+        border: none;
+        margin: 0;
+        align-items: center;
+
+        & img{
+          width: .6rem;
+          aspect-ratio: 1/1;
+        }
+      }
+    }
 
   `
 })
 export class GenresComponent implements OnInit {
   public genre = input.required<string>();
+  public btn = input<boolean>();
   public colorBase:string = ''
   public colorLight:string = ''
   public colorDark:string = ''
@@ -47,7 +69,12 @@ export class GenresComponent implements OnInit {
     "rgb(17, 219, 255)",   // Gris Claro (Secundario/Complementario)
     "rgb(46, 204, 113)",    // Verde Brillante (Positivo/Activo)
     "rgb(230, 126, 34)",    // Naranja Vivo (Llamativo/Atención)
-    "rgb(142, 68, 173)"     // Violeta (Elegancia/Distinción)
+    "rgb(142, 68, 173)" ,    // Violeta (Elegancia/Distinción)
+    "rgb(241, 196, 15)",    // Amarillo (Advertencia/Precaución)
+    "rgb(52, 152, 219)",    // Azul Claro (Énfasis/Información)
+    "rgb(39, 174, 96)",     // Verde Claro (Éxito/Confirmación)
+    "rgb(192, 57, 43)",     // Rojo Oscuro (Error/Urgencia)
+
   ];
 
   lightenColor(color: string, percent: number): string {
@@ -67,6 +94,10 @@ export class GenresComponent implements OnInit {
 
   ngOnInit(): void {
     this.getColors()
+  }
+
+  delete(){
+    console.log('cancelado!!!')
   }
 
 }

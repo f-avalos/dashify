@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
     });
     this.apiService.getTopGenres('long_term').subscribe((topGenres) => {
       console.log(topGenres);
-      this.topGenres = topGenres;
+      this.topGenres = topGenres.slice(0, topGenres.length/2);
     });
   }
 }

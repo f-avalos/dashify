@@ -48,7 +48,7 @@
 
 @media (min-width: 1025px){
   .profile{
-    margin: 2rem;
+    margin: 1rem 1rem;
   }
 
   .profile > .container:first-child{

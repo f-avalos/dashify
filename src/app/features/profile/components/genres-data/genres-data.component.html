@@ -3,6 +3,6 @@
 </div>
   <div cdkDropList cdkDropListOrientation="mixed" class="genres" (cdkDropListDropped)="drop($event)">
   @for (genre of topGenres(); track $index) {
-    <app-genres class="genre" cdkDrag [genre]="genre.genre"></app-genres>
+    <app-genres cdkDragBoundary=".genres" class="genre" cdkDrag [genre]="genre.genre"></app-genres>
   }
 </div>
